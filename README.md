@@ -1,9 +1,12 @@
 # Cython wrapper for [ShootMe/Klondike-Solver](ks)
 
-Work in progress...
+Thin Python package to wrap the functionality of the [Klondike-Solver](ks) for
+use in Python.
 
-Makes the functionality of the [Klondike-Solver](ks) available as a Python
-package with the use of Cython.
+Although this is a work in progress, it is already functional and can be
+installed following the procedure documented in the temporary
+[documentation](docs)
 
 
 [ks]:(https://github.com/ShootMe/Klondike-Solver)
+[docs]:(https://www.tizilogic.com/various/pyksolve)
