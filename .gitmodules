@@ -1,0 +1,3 @@
+[submodule "ext/klondike-solver"]
+	path = ext/klondike-solver
+	url = git://github.com/ShootMe/Klondike-Solver.git
