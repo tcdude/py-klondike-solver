@@ -70,7 +70,7 @@ setup(
     setup_requires=['Cython'],
     ext_modules=cythonize(
         extensions,
-        compiler_directives={'language_level': 3},
+        compiler_directives={'language_level': 3, 'embedsignature': True},
         annotate=False
     ),
 )
