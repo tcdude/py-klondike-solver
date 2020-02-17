@@ -5,8 +5,14 @@ jobs:
     # perform a linux build
     - services: docker
     # and a mac build
-    # - os: osx
-    #  language: shell
+    - os: osx
+      language: shell
+    # windows build 3.6
+    - os: windows
+      language: shell
+      before_install:
+        - choco install python --version 3.6
+        - export PATH="/c/Python36:/c/Python36/Scripts:$PATH"
     # windows build 3.7
     - os: windows
       language: shell
@@ -22,7 +28,7 @@ jobs:
 
 env:
   global:
-    - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-*"
+    - CIBW_SKIP="cp27-* cp33-* cp34-* cp35-* *macosx_10_6*"
     - TWINE_USERNAME=__token__
     # Note: TWINE_PASSWORD is set to a PyPI API token in Travis settings
 

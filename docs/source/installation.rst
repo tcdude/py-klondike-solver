@@ -6,8 +6,8 @@ Dependencies
 
 pyksolve requires Python 3.6 or higher.
 
-There are currently binary wheels available for Linux and Windows on PyPI for
-various Python versions.
+There are currently binary wheels available for Linux, macOSX and Windows on
+PyPI for various Python versions.
 
 Installing binary wheels
 ########################
@@ -35,7 +35,8 @@ dependencies you need to build pyksolve:
 On **Windows**, `this <https://wiki.python.org/moin/WindowsCompilers>`_ wiki
 page contains all necessary information to get a compiler installed.
 
-This package is not, as of yet tested on **macOS**.
+This package is not, as of yet tested on **macOS**, although in CI it seems to
+build correctly for Python 3.8 .
 
 PyPI
 ****
