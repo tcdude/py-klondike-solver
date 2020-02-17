@@ -6,23 +6,53 @@ Dependencies
 
 pyksolve requires Python 3.6 or higher.
 
-Currently no binary wheels are available nor is the package available on PyPI.
-Before installing, you need to make sure to have a C++ tool chain and the
-Python header files for your Python version installed/available.
+There are currently binary wheels available for Linux and Windows on PyPI for
+various Python versions.
 
-On Debian/Ubuntu based systems, this command should install all dependencies for
-you:
+Installing binary wheels
+########################
+
+Run the following command:
+
+.. code-block:: bash
+
+    pip3 install --upgrade pyksolve
+
+
+Installing from source
+######################
+
+Otherwise the package can be built from source, which requires a C++ tool chain
+installed.
+
+On Debian/Ubuntu based **Linux**, this command will install all
+dependencies you need to build pyksolve:
 
 .. code-block:: bash
 
     sudo apt install build-essential python3-dev
 
-Installation
-############
+On **Windows**, `this <https://wiki.python.org/moin/WindowsCompilers>`_ wiki
+page contains all necessary information to get a compiler installed.
 
-To install directly from the master branch of pyksolve, using ``pip`` 
-(or ``pip3`` in some cases):
+This package is not, as of yet tested on **macOS**.
+
+PyPI
+****
+
+To install the source distribution from PyPI, run:
 
 .. code-block:: bash
 
-    pip install git+https://github.com/tcdude/py-klondike-solver.git
+    pip3 install --upgrade --no-binary pyksolve
+
+
+GitHub
+******
+
+To install directly from the master branch of pyksolve, run the following
+command:
+
+.. code-block:: bash
+
+    pip3 install --upgrade git+https://github.com/tcdude/py-klondike-solver.git
