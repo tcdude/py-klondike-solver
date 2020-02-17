@@ -6,7 +6,7 @@ jobs:
     - services: docker
     # and a mac build
     - os: osx
-     language: shell
+      language: shell
     # windows build 3.6
     - os: windows
       language: shell
