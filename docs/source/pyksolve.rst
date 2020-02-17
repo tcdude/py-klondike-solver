@@ -9,10 +9,10 @@ pyksolve package
 Submodules
 ----------
 
-pyksolve.solitaire module
+pyksolve.solver module
 -------------------------
 
-.. automodule:: pyksolve.solitaire
+.. automodule:: pyksolve.solver
    :members:
    :undoc-members:
    :show-inheritance:

@@ -1,4 +1,5 @@
 import os
+import platform
 from setuptools import setup
 from setuptools import find_namespace_packages
 from distutils.extension import Extension
@@ -35,16 +36,25 @@ with open('README.md', 'r') as fh:
 with open('VERSION', 'r') as fh:
     version = fh.read()
 
-extensions = [
-    Extension(
-        '*',
-        ['src/**/*.pyx'],
-        include_dirs=['ext/klondike-solver'],
-        libraries=['stdc++'],
-        extra_compile_args=["-std=c++11", "-fopenmp"],
-        extra_link_args=["-std=c++11", "-fopenmp"]
-    )
-]
+if platform.platform().lower().startswith('win'):
+    extensions = [
+        Extension(
+            '*',
+            ['src/**/*.pyx'],
+            include_dirs=['ext/klondike-solver'],
+            extra_compile_args=["/openmp"]
+        )
+    ]
+else:
+    extensions = [
+        Extension(
+            '*',
+            ['src/**/*.pyx'],
+            include_dirs=['ext/klondike-solver'],
+            extra_compile_args=["-std=c++11", "-fopenmp"],
+            extra_link_args=["-std=c++11", "-fopenmp"]
+        )
+    ]
 
 
 setup(

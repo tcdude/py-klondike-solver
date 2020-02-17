@@ -1,8 +1,8 @@
 """
-Unit tests for the solitaire module.
+Unit tests for the solver module.
 """
 
-from pyksolve import solitaire
+from pyksolve import solver
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
@@ -34,7 +34,7 @@ def test_shuffle1():
     """
     Test the functionality of the shuffle1 method.
     """
-    s = solitaire.Solitaire()
+    s = solver.Solitaire()
     s.reset_game()
     assert s.shuffle1(7187413) == 7187413
     s.reset_game()
@@ -45,7 +45,7 @@ def test_draw_count():
     """
     Test the draw_count property.
     """
-    s = solitaire.Solitaire()
+    s = solver.Solitaire()
     s.draw_count = 3
     assert s.draw_count == 3
 
@@ -54,12 +54,12 @@ def test_solve_fast():
     """
     Test the solve_minimal method.
     """
-    s = solitaire.Solitaire()
+    s = solver.Solitaire()
     s.shuffle1(1023536416)
     s.reset_game()
     assert s.solve_fast(0, 0, 5_000_000) in (
-        solitaire.SolveResult.SolvedMinimal,
-        solitaire.SolveResult.SolvedMayNotBeMinimal)
+        solver.SolveResult.SolvedMinimal,
+        solver.SolveResult.SolvedMayNotBeMinimal)
     assert s.moves_made_count == 74
 
 
@@ -67,11 +67,11 @@ def test_solve_minimal():
     """
     Test the solve_minimal method.
     """
-    s = solitaire.Solitaire()
+    s = solver.Solitaire()
     s.shuffle1(1023536416)
     s.reset_game()
     assert s.solve_minimal(5_000_000) \
-        == solitaire.SolveResult.SolvedMinimal
+        == solver.SolveResult.SolvedMinimal
     assert s.moves_made_count == 73
 
 
@@ -79,11 +79,11 @@ def test_solve_minimal_multithreaded():
     """
     Test the solve_minimal_multithreaded method.
     """
-    s = solitaire.Solitaire()
+    s = solver.Solitaire()
     s.shuffle1(1023536416)
     s.reset_game()
     assert s.solve_minimal_multithreaded(8) \
-        == solitaire.SolveResult.SolvedMinimal
+        == solver.SolveResult.SolvedMinimal
     assert s.moves_made_count == 73
 
 
@@ -91,12 +91,12 @@ def test_foundation_count():
     """
     Test the foundation_count property.
     """
-    s = solitaire.Solitaire()
+    s = solver.Solitaire()
     s.shuffle1(1023536416)
     s.reset_game()
     assert s.foundation_count == 0
     assert s.solve_minimal_multithreaded(8) \
-        == solitaire.SolveResult.SolvedMinimal
+        == solver.SolveResult.SolvedMinimal
     assert s.foundation_count == 52
     s.reset_game()
     assert s.foundation_count == 0
