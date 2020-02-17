@@ -17,7 +17,7 @@ from .cppsolitaire cimport Move as _Move
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.2'
+__version__ = '0.0.2a'
 __copyright__ = """Copyright (c) 2020 Tiziano Bettio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
