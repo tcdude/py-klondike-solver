@@ -25,6 +25,7 @@ with open('../../VERSION') as f:
     version = f.read().strip()
 release = version
 
+master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
 
