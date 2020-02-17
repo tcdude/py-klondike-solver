@@ -12,7 +12,7 @@ jobs:
       language: shell
       before_install:
         - choco install python --version 3.6
-        - export PATH="/c/Python37:/c/Python36/Scripts:$PATH"
+        - export PATH="/c/Python36:/c/Python36/Scripts:$PATH"
     # windows build 3.7
     - os: windows
       language: shell
