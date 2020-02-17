@@ -44,14 +44,25 @@ if platform.system() == 'Windows':
             include_dirs=['ext/klondike-solver'],
         )
     ]
+elif platform.system() == 'Darwin':
+    extensions = [
+        Extension(
+            '*',
+            ['src/**/*.pyx'],
+            include_dirs=['ext/klondike-solver'],
+            extra_compile_args=['-std=c++11', '-stdlib=libc++'],
+            extra_link_args=['-std=c++11', '-stdlib=libc++']
+        )
+    ]
+
 else:
     extensions = [
         Extension(
             '*',
             ['src/**/*.pyx'],
             include_dirs=['ext/klondike-solver'],
-            extra_compile_args=["-std=c++11"],
-            extra_link_args=["-std=c++11"]
+            extra_compile_args=['-std=c++11'],
+            extra_link_args=['-std=c++11']
         )
     ]
 
