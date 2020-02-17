@@ -36,13 +36,12 @@ with open('README.md', 'r') as fh:
 with open('VERSION', 'r') as fh:
     version = fh.read()
 
-if platform.platform().lower().startswith('win'):
+if platform.system() == 'Windows':
     extensions = [
         Extension(
             '*',
             ['src/**/*.pyx'],
             include_dirs=['ext/klondike-solver'],
-            extra_compile_args=["/openmp"]
         )
     ]
 else:
@@ -51,8 +50,8 @@ else:
             '*',
             ['src/**/*.pyx'],
             include_dirs=['ext/klondike-solver'],
-            extra_compile_args=["-std=c++11", "-fopenmp"],
-            extra_link_args=["-std=c++11", "-fopenmp"]
+            extra_compile_args=["-std=c++11"],
+            extra_link_args=["-std=c++11"]
         )
     ]
 
