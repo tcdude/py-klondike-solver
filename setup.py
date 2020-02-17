@@ -7,7 +7,7 @@ from Cython.Build import cythonize
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.2a'
+__version__ = '0.0.3'
 __copyright__ = """
 Copyright (c) 2020 Tiziano Bettio
 
@@ -69,6 +69,7 @@ setup(
     packages=find_namespace_packages(include=['src']),
     package_data={'pyksolve': [
         'LICENSE.md',
+        'VERSION'
     ]},
     package_dir={'pyksolve': ''},
     classifiers=[
