@@ -17,7 +17,7 @@ from .cppsolitaire cimport Move as _Move
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 __copyright__ = """Copyright (c) 2020 Tiziano Bettio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -121,8 +121,11 @@ cdef class Solitaire:
 
     cdef int _solve_minimal_multithreaded(
             self, int num_threads, int max_closed_count):
-        return deref(self.thisptr).SolveMinimalMultithreaded(
-            num_threads, max_closed_count)
+        cdef int res
+        with nogil:
+            res = deref(self.thisptr).SolveMinimalMultithreaded(num_threads,
+                max_closed_count)
+        return res
 
     def solve_minimal(self, max_closed_count=None):
         """
@@ -138,7 +141,10 @@ cdef class Solitaire:
         return SolveResult(self._solve_minimal(max_closed_count or 5_000_000))
 
     cdef int _solve_minimal(self, int max_closed_count):
-        return deref(self.thisptr).SolveMinimal(max_closed_count)
+        cdef int res
+        with nogil:
+            res = deref(self.thisptr).SolveMinimal(max_closed_count)
+        return res
 
     def solve_fast(self, two_shift=0, three_shift=0, max_closed_count=None):
         """
@@ -158,8 +164,11 @@ cdef class Solitaire:
 
     cdef int _solve_fast(
             self, int two_shift, int three_shift, int max_closed_count):
-        return deref(self.thisptr).SolveFast(
-            max_closed_count, two_shift, three_shift)
+        cdef int res
+        with nogil:
+            res = deref(self.thisptr).SolveFast(max_closed_count, two_shift,
+                three_shift)
+        return res
 
     @property
     def moves_made_count(self):

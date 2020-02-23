@@ -7,7 +7,7 @@ from libcpp.string cimport string
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.4'
+__version__ = '0.0.5'
 __copyright__ = """Copyright (c) 2020 Tiziano Bettio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -74,9 +74,9 @@ cdef extern from "Solitaire.h":
         void Shuffle2(int dealNumber)
         void ResetGame()
         void ResetGame(int drawCount)
-        SolveResult SolveMinimalMultithreaded(int numThreads, int maxClosedCount)
-        SolveResult SolveMinimal(int maxClosedCount)
-        SolveResult SolveFast(int maxClosedCount, int twoShift, int threeShift)
+        SolveResult SolveMinimalMultithreaded(int numThreads, int maxClosedCount) nogil
+        SolveResult SolveMinimal(int maxClosedCount) nogil
+        SolveResult SolveFast(int maxClosedCount, int twoShift, int threeShift) nogil
         int MovesMadeCount()
         int MovesMadeNormalizedCount()
         int FoundationCount()
