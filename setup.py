@@ -7,7 +7,7 @@ from Cython.Build import cythonize
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 __copyright__ = """
 Copyright (c) 2020 Tiziano Bettio
 
@@ -76,12 +76,12 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/tcdude/py-klondike-solver',
-    packages=find_namespace_packages(include=['src']),
+    packages=find_namespace_packages(where='src'),
     package_data={'pyksolve': [
         'LICENSE.md',
         'VERSION'
     ]},
-    package_dir={'pyksolve': ''},
+    package_dir={'': 'src'},
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
