@@ -74,9 +74,9 @@ cdef extern from "Solitaire.h":
         void Shuffle2(int dealNumber)
         void ResetGame()
         void ResetGame(int drawCount)
-        SolveResult SolveMinimalMultithreaded(int numThreads, int maxClosedCount)
-        SolveResult SolveMinimal(int maxClosedCount)
-        SolveResult SolveFast(int maxClosedCount, int twoShift, int threeShift)
+        SolveResult SolveMinimalMultithreaded(int numThreads, int maxClosedCount) nogil
+        SolveResult SolveMinimal(int maxClosedCount) nogil
+        SolveResult SolveFast(int maxClosedCount, int twoShift, int threeShift) nogil
         int MovesMadeCount()
         int MovesMadeNormalizedCount()
         int FoundationCount()
