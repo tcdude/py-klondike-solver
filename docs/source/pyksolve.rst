@@ -17,3 +17,11 @@ pyksolve.solver module
    :undoc-members:
    :show-inheritance:
 
+
+pyksolve.deferred module
+-------------------------
+
+.. automodule:: pyksolve.deferred
+   :members:
+   :undoc-members:
+   :show-inheritance:
