@@ -54,7 +54,7 @@ else:
 EXT = '.pyx' if USE_CYTHON else '.cpp'
 EXTENSIONS = [
     Extension(
-        i[4:-4].replace('/', '.'),
+        i[4:-4].replace('/', '.').replace('\\', '.'),
         [i],
         include_dirs=['ext/klondike-solver'],
         extra_compile_args=EXTRA_COMPILE_ARGS,
