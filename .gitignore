@@ -240,4 +240,5 @@ dmypy.json
 ### Custom
 src/**/*.cpp
 docs/build
+docs/source/_build
 docs/make.bat

@@ -7,7 +7,7 @@ from libcpp.string cimport string
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 __copyright__ = """Copyright (c) 2020 Tiziano Bettio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

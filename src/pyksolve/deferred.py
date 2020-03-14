@@ -17,7 +17,7 @@ from . import solver
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 __copyright__ = """Copyright (c) 2020 Tiziano Bettio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -41,40 +41,22 @@ SOFTWARE."""
 MAX_SEED = 2 ** 31 - 1
 
 
-def _solve(exit_e: threading.Event, sol: solver.Solitaire, seed: int,
-           max_closed: int, res_q: queue.Queue) -> None:
-    """
-    Solver thread -> spawned by a worker thread and left dangling if the worker
-    thread exits. Potential result will be discarded if `exit_e` is set.
-    """
-    if abs(sol.solve_fast(max_closed).value) == 1:
-        if exit_e.is_set():
-            return
-        res_q.put((seed, sol.draw_count, sol.moves_made()))
-
-
 def _worker(exit_e: threading.Event, e_conf: threading.Event,
             job_q: queue.Queue, res_q: queue.Queue, max_closed: int) -> None:
     """Worker thread -> consumes jobs that are executed in a Solver thread."""
     sol = solver.Solitaire()
-    inactive = True
-    solve_t: Union[threading.Thread, None] = None
 
     while not exit_e.is_set():
-        if inactive:
-            seed, draw_count = job_q.get()
-            sol.draw_count = draw_count
-            sol.shuffle1(seed)
-            sol.reset_game()
-            solve_t = threading.Thread(target=_solve, args=(exit_e, sol, seed,
-                                       max_closed, res_q), daemon=True)
-            solve_t.start()
-            inactive = False
-        else:
-            solve_t.join(0.001)
-            if not solve_t.is_alive():
-                job_q.task_done()
-                inactive = True
+        try:
+            seed, draw_count = job_q.get(timeout=0.001)
+        except queue.Empty:
+            continue
+        sol.draw_count = draw_count
+        sol.shuffle1(seed)
+        sol.reset_game()
+        if abs(sol.solve_fast(max_closed).value) == 1:
+            res_q.put((seed, sol.draw_count, sol.moves_made()))
+        job_q.task_done()
     e_conf.set()
 
 
@@ -98,7 +80,8 @@ def _filler(exit_e: threading.Event, e_conf:threading.Event, job_q: queue.Queue,
 class DeferredSolver:
     """
     Provides a cache of solved games, that is kept at a user defined number of
-    games for each specified draw count.
+    games for each specified draw count. To properly clean up, call
+    :meth:`DeferredSolver.stop` when the `DeferredSolver` is no longer needed.
 
     Args:
         draw_counts: ``Tuple[int, ...]`` -> for which draw count a cache is
@@ -109,6 +92,11 @@ class DeferredSolver:
         max_closed: ``int`` -> max_closed argument to be passed to the
             used :meth:`pyksolve.solver.Solitaire.solve_fast` method. Defaults
             to `1,000,000`.
+
+    .. warning::
+        If you don't call :meth:`DeferredSolver.stop`, your program might hang
+        until terminated forcefully. After :meth:`DeferredSolver.stop` was
+        called, the class is defunct!
     """
     def __init__(self, draw_counts: Tuple[int, ...] = (1, 3),
                  cache_num:int = 5, threads:int = 3,
@@ -179,7 +167,7 @@ class DeferredSolver:
             self._result_queue.task_done()
         return self._solved[draw_count].pop(0)
 
-    def _stop(self):
+    def stop(self):
         """
         Signals all threads to stop.
         """
@@ -195,8 +183,3 @@ class DeferredSolver:
                     break
             if clean:
                 break
-
-    def __del__(self):
-        # Make sure all threads are stopped before garbage collection.
-        if not self._exit_thread.is_set():
-            self._stop()

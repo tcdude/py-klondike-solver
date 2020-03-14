@@ -6,7 +6,7 @@ from pyksolve import deferred
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.6'
+__version__ = '0.0.7'
 __copyright__ = """
 Copyright (c) 2020 Tiziano Bettio
 
@@ -47,3 +47,4 @@ def test_deferred_solver():
     assert seed > 0
     assert diagram != ''
     assert moves != ''
+    d.stop()
