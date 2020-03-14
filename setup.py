@@ -1,13 +1,18 @@
+import glob
 import os
 import platform
 from setuptools import setup
 from setuptools import find_namespace_packages
 from distutils.extension import Extension
-from Cython.Build import cythonize
+try:
+    from Cython.Build import cythonize
+    USE_CYTHON = True
+except ImportError:
+    USE_CYTHON = False
 
 __author__ = 'Tiziano Bettio'
 __license__ = 'MIT'
-__version__ = '0.0.7'
+__version__ = '0.0.8'
 __copyright__ = """
 Copyright (c) 2020 Tiziano Bettio
 
@@ -37,35 +42,36 @@ with open('VERSION', 'r') as fh:
     version = fh.read()
 
 if platform.system() == 'Windows':
-    extensions = [
-        Extension(
-            '*',
-            ['src/**/*.pyx'],
-            include_dirs=['ext/klondike-solver'],
-        )
-    ]
+    EXTRA_COMPILE_ARGS = []
+    EXTRA_LINK_ARGS = []
 elif platform.system() == 'Darwin':
-    extensions = [
-        Extension(
-            '*',
-            ['src/**/*.pyx'],
-            include_dirs=['ext/klondike-solver'],
-            extra_compile_args=['-std=c++11', '-stdlib=libc++'],
-            extra_link_args=['-std=c++11', '-stdlib=libc++']
-        )
-    ]
-
+    EXTRA_COMPILE_ARGS = ['-std=c++11', '-stdlib=libc++']
+    EXTRA_LINK_ARGS = ['-std=c++11', '-stdlib=libc++']
 else:
-    extensions = [
-        Extension(
-            '*',
-            ['src/**/*.pyx'],
-            include_dirs=['ext/klondike-solver'],
-            extra_compile_args=['-std=c++11'],
-            extra_link_args=['-std=c++11']
-        )
-    ]
+    EXTRA_COMPILE_ARGS = ['-std=c++11']
+    EXTRA_LINK_ARGS = ['-std=c++11']
 
+EXT = '.pyx' if USE_CYTHON else '.cpp'
+EXTENSIONS = [
+    Extension(
+        i[4:-4].replace('/', '.'),
+        [i],
+        include_dirs=['ext/klondike-solver'],
+        extra_compile_args=EXTRA_COMPILE_ARGS,
+        extra_link_args=EXTRA_LINK_ARGS,
+        language='c++'
+    )
+    for i in glob.glob('src/pyksolve/**/*' + EXT, recursive=True)
+]
+
+
+def ext_modules():
+    if USE_CYTHON:
+        return cythonize(EXTENSIONS,
+                         compiler_directives={'language_level': 3,
+                                              'embedsignature': True},
+                         annotate=False)
+    return EXTENSIONS
 
 setup(
     name='pyksolve',
@@ -88,10 +94,5 @@ setup(
         'Operating System :: OS Independent',
     ],
     python_requires='>=3.6',
-    setup_requires=['Cython'],
-    ext_modules=cythonize(
-        extensions,
-        compiler_directives={'language_level': 3, 'embedsignature': True},
-        annotate=False
-    ),
+    ext_modules=ext_modules(),
 )
