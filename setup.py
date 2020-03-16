@@ -59,7 +59,8 @@ EXTENSIONS = [
         include_dirs=['ext/klondike-solver'],
         extra_compile_args=EXTRA_COMPILE_ARGS,
         extra_link_args=EXTRA_LINK_ARGS,
-        language='c++'
+        language='c++',
+        libraries=['c++_shared'] if platform.machine() != 'x86_64' else []
     )
     for i in glob.glob('src/pyksolve/**/*' + EXT, recursive=True)
 ]
