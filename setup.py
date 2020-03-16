@@ -60,7 +60,7 @@ EXTENSIONS = [
         extra_compile_args=EXTRA_COMPILE_ARGS,
         extra_link_args=EXTRA_LINK_ARGS,
         language='c++',
-        libraries=['c++_shared'] if platform.machine() != 'x86_64' else []
+        libraries=['c++_shared']
     )
     for i in glob.glob('src/pyksolve/**/*' + EXT, recursive=True)
 ]
