@@ -79,7 +79,8 @@ def ext_modules():
                          annotate=False)
     return EXTENSIONS
 
-# If the submodule hasn't been cloned recursively, download it.
+
+# Check if the submodule is present, download if not.
 if not os.path.exists('ext/klondike-solver/Solitaire.cpp'):
     import io, shutil, urllib.request, zipfile
     uri = 'https://github.com/ShootMe/Klondike-Solver/archive/master.zip'
@@ -88,10 +89,12 @@ if not os.path.exists('ext/klondike-solver/Solitaire.cpp'):
     zipf = zipfile.ZipFile(buf)
     os.makedirs('tmp')
     zipf.extractall('tmp')
-    os.makedirs('ext/klondike-solver')
+    if not os.path.exists('ext/klondike-solver'):
+        os.makedirs('ext/klondike-solver')
     for pth in glob.glob('tmp/Klondike-Solver-master/*', recursive=True):
         shutil.move(pth, 'ext/klondike-solver')
     shutil.rmtree('tmp')
+
 
 setup(
     name='pyksolve',
