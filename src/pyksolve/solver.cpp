@@ -1369,7 +1369,7 @@ static const char __pyx_k_enum[] = "enum";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_0_0_7[] = "0.0.9";
+static const char __pyx_k_0_0_7[] = "0.0.10";
 static const char __pyx_k_utf_8[] = "utf-8";
 static const char __pyx_k_author[] = "__author__";
 static const char __pyx_k_encode[] = "encode";
@@ -4764,7 +4764,7 @@ if (!__Pyx_RefNanny) {
  *
  * __author__ = 'Tiziano Bettio'             # <<<<<<<<<<<<<<
  * __license__ = 'MIT'
- * __version__ = '0.0.9'
+ * __version__ = '0.0.10'
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_author, __pyx_kp_u_Tiziano_Bettio) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
 
@@ -4772,7 +4772,7 @@ if (!__Pyx_RefNanny) {
  *
  * __author__ = 'Tiziano Bettio'
  * __license__ = 'MIT'             # <<<<<<<<<<<<<<
- * __version__ = '0.0.9'
+ * __version__ = '0.0.10'
  * __copyright__ = """Copyright (c) 2020 Tiziano Bettio
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_license, __pyx_n_u_MIT) < 0) __PYX_ERR(1, 19, __pyx_L1_error)
@@ -4780,7 +4780,7 @@ if (!__Pyx_RefNanny) {
   /* "pyksolve/solver.pyx":20
  * __author__ = 'Tiziano Bettio'
  * __license__ = 'MIT'
- * __version__ = '0.0.9'             # <<<<<<<<<<<<<<
+ * __version__ = '0.0.10'             # <<<<<<<<<<<<<<
  * __copyright__ = """Copyright (c) 2020 Tiziano Bettio
  *
  */
@@ -4788,7 +4788,7 @@ if (!__Pyx_RefNanny) {
 
   /* "pyksolve/solver.pyx":21
  * __license__ = 'MIT'
- * __version__ = '0.0.9'
+ * __version__ = '0.0.10'
  * __copyright__ = """Copyright (c) 2020 Tiziano Bettio             # <<<<<<<<<<<<<<
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
