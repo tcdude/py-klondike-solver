@@ -87,13 +87,14 @@ if not os.path.exists('ext/klondike-solver/Solitaire.cpp'):
     req = urllib.request.urlopen(uri)
     buf = io.BytesIO(req.read())
     zipf = zipfile.ZipFile(buf)
-    os.makedirs('tmp')
+    if not os.path.exists('tmp'):
+        os.makedirs('tmp')
     zipf.extractall('tmp')
     if not os.path.exists('ext/klondike-solver'):
         os.makedirs('ext/klondike-solver')
     for pth in glob.glob('tmp/Klondike-Solver-master/*', recursive=True):
         shutil.move(pth, 'ext/klondike-solver')
-    shutil.rmtree('tmp')
+    shutil.rmtree('tmp/Klondike-Solver-master')
 
 
 setup(
