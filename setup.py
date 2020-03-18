@@ -51,6 +51,11 @@ else:
     EXTRA_COMPILE_ARGS = ['-std=c++11']
     EXTRA_LINK_ARGS = ['-std=c++11']
 
+# Add "c++_shared" to libraries if installed via python-for-android
+LIBRARIES = []
+if 'ARCH' in os.environ and os.environ['ARCH'].startswith('arm'):
+    LIBRARIES.append('c++_shared')
+
 EXT = '.pyx' if USE_CYTHON else '.cpp'
 EXTENSIONS = [
     Extension(
@@ -60,7 +65,7 @@ EXTENSIONS = [
         extra_compile_args=EXTRA_COMPILE_ARGS,
         extra_link_args=EXTRA_LINK_ARGS,
         language='c++',
-        libraries=['c++_shared']
+        libraries=LIBRARIES
     )
     for i in glob.glob('src/pyksolve/**/*' + EXT, recursive=True)
 ]
@@ -73,6 +78,20 @@ def ext_modules():
                                               'embedsignature': True},
                          annotate=False)
     return EXTENSIONS
+
+# If the submodule hasn't been cloned recursively, download it.
+if not os.path.exists('ext/klondike-solver/Solitaire.cpp'):
+    import io, shutil, urllib.request, zipfile
+    uri = 'https://github.com/ShootMe/Klondike-Solver/archive/master.zip'
+    req = urllib.request.urlopen(uri)
+    buf = io.BytesIO(req.read())
+    zipf = zipfile.ZipFile(buf)
+    os.makedirs('tmp')
+    zipf.extractall('tmp')
+    os.makedirs('ext/klondike-solver')
+    for pth in glob.glob('tmp/Klondike-Solver-master/*', recursive=True):
+        shutil.move(pth, 'ext/klondike-solver')
+    shutil.rmtree('tmp')
 
 setup(
     name='pyksolve',
