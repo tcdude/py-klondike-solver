@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- Project information -----------------------------------------------------
 
 project = 'pyksolve'
-copyright = '2020, Tiziano Bettio'
+copyright = '2021, Tiziano Bettio'
 author = 'Tiziano Bettio'
 
 with open('../../VERSION') as f:

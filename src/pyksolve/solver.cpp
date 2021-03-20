@@ -1369,7 +1369,7 @@ static const char __pyx_k_enum[] = "enum";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_0_0_7[] = "0.0.10";
+static const char __pyx_k_0_0_7[] = "0.0.11";
 static const char __pyx_k_utf_8[] = "utf-8";
 static const char __pyx_k_author[] = "__author__";
 static const char __pyx_k_encode[] = "encode";
@@ -1405,7 +1405,7 @@ static const char __pyx_k_max_closed_count[] = "max_closed_count";
 static const char __pyx_k_Solve_result_enum[] = "\n    Solve result enum.\n    ";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_SolvedMayNotBeMinimal[] = "SolvedMayNotBeMinimal";
-static const char __pyx_k_Copyright_c_2020_Tiziano_Bettio[] = "Copyright (c) 2020 Tiziano Bettio\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.";
+static const char __pyx_k_Copyright_c_2020_Tiziano_Bettio[] = "Copyright (c) 2021 Tiziano Bettio\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.";
 static const char __pyx_k_Provides_the_wrapped_main_funct[] = "\nProvides the wrapped main function of \"KlondikeSolver.cpp\".\n";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_kp_u_0_0_7;
@@ -4764,7 +4764,7 @@ if (!__Pyx_RefNanny) {
  *
  * __author__ = 'Tiziano Bettio'             # <<<<<<<<<<<<<<
  * __license__ = 'MIT'
- * __version__ = '0.0.10'
+ * __version__ = '0.0.11'
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_author, __pyx_kp_u_Tiziano_Bettio) < 0) __PYX_ERR(1, 18, __pyx_L1_error)
 
@@ -4772,24 +4772,24 @@ if (!__Pyx_RefNanny) {
  *
  * __author__ = 'Tiziano Bettio'
  * __license__ = 'MIT'             # <<<<<<<<<<<<<<
- * __version__ = '0.0.10'
- * __copyright__ = """Copyright (c) 2020 Tiziano Bettio
+ * __version__ = '0.0.11'
+ * __copyright__ = """Copyright (c) 2021 Tiziano Bettio
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_license, __pyx_n_u_MIT) < 0) __PYX_ERR(1, 19, __pyx_L1_error)
 
   /* "pyksolve/solver.pyx":20
  * __author__ = 'Tiziano Bettio'
  * __license__ = 'MIT'
- * __version__ = '0.0.10'             # <<<<<<<<<<<<<<
- * __copyright__ = """Copyright (c) 2020 Tiziano Bettio
+ * __version__ = '0.0.11'             # <<<<<<<<<<<<<<
+ * __copyright__ = """Copyright (c) 2021 Tiziano Bettio
  *
  */
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_version, __pyx_kp_u_0_0_7) < 0) __PYX_ERR(1, 20, __pyx_L1_error)
 
   /* "pyksolve/solver.pyx":21
  * __license__ = 'MIT'
- * __version__ = '0.0.10'
- * __copyright__ = """Copyright (c) 2020 Tiziano Bettio             # <<<<<<<<<<<<<<
+ * __version__ = '0.0.11'
+ * __copyright__ = """Copyright (c) 2021 Tiziano Bettio             # <<<<<<<<<<<<<<
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  */
