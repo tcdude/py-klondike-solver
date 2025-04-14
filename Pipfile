@@ -8,5 +8,6 @@ cython = "*"
 pytest = "*"
 sphinx = "*"
 sphinx-rtd-theme = "*"
+setuptools = "*"
 
 [packages]
