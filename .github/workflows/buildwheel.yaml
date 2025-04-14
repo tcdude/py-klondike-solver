@@ -46,8 +46,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get submodules
-        run: git submodule update --init --recursive
+      #- name: Get submodules
+      #  run: git submodule update --init --recursive
 
       - name: Build sdist
         run: pipx run build --sdist
