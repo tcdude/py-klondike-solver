@@ -3,7 +3,7 @@ import os
 import platform
 from setuptools import setup
 from setuptools import find_namespace_packages
-from distutils.extension import Extension
+from setuptools import Extension
 try:
     from Cython.Build import cythonize
     USE_CYTHON = True
